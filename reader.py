@@ -1,6 +1,5 @@
 file = open('access.log', 'r')
 
-rollingList = []
 errorList = []
 
 for line in file:
@@ -12,12 +11,15 @@ for line in file:
             currentTest = currentTest + x
         else:
             if currentTest.isdigit() and int(currentTest) < 600 and int(currentTest) > 399:
-                rollingList.append(line)
-                errorList.append(currentTest)
+                innerlist = [currentTest, line]
+                errorList.append(innerlist)
             
             currentTest = ''
 
+errorList.sort()
 
+for i in errorList:
+    print(i)
 
-
+print(len(errorList))
 file.close
