@@ -17,9 +17,12 @@ for line in file:
             currentTest = ''
 
 errorList.sort()
+relist = []
+i = 0
+for x in errorList:
+    temp = errorList[x][1]
+    relist.append(temp)
 
-for i in errorList:
-    print(i)
-
-print(len(errorList))
+for line in relist:
+    print(line)
 file.close
