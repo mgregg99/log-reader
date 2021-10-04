@@ -89,5 +89,21 @@ while i < len(errorList):
 datelist = turnToDate(relist)
 
 
-656810
+def turntofinal(datelist):
+    datelist.sort(reverse = True)
+    workingyear = datelist[0][0]
+    workinglist = []
+    i = 0
 
+    while i < len(datelist):
+        if datelist[i][0] == workingyear:
+            workinglist.append(datelist[i])
+            i += 1
+        else:
+            workinglist.sort(key=lambda x:x[1], reverse = True)
+            j = 0
+            workingmonthlist = []
+            workingmonth = workinglist[j][1]
+
+    for line in workinglist:
+        print(line)
