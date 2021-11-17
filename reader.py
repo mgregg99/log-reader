@@ -59,9 +59,10 @@ def turnToDate(relist):
         datelist.append(newlist)
     return datelist
 
-file = open('access.log', 'r')
+file = open('/home/byu.local/mgregg99/Source/log-reader/access.log', 'r')
 
-errorList = []
+errorList4 = []
+errorList5 = []
 
 for line in file:
     currentTest = ''
@@ -73,37 +74,51 @@ for line in file:
         else:
             if currentTest.isdigit() and int(currentTest) < 600 and int(currentTest) > 399:
                 innerlist = [currentTest, line]
-                errorList.append(innerlist)
+                if int(currentTest) > 399 and int(currentTest) < 500:
+                    errorList4.append(line)
+                if int(currentTest) > 499 and int(currentTest) < 600:
+                    errorList5.append(line)
             
             currentTest = ''
 file.close
 
-errorList.sort()
-relist = []
-i = 0
-while i < len(errorList):
-
-    relist.append(errorList[i][1])
-    i += 1
-
-datelist = turnToDate(relist)
+for line in errorList4:
+    print(line)
+for line in errorList5:
+     print(line)
 
 
-def turntofinal(datelist):
-    datelist.sort(reverse = True)
-    workingyear = datelist[0][0]
-    workinglist = []
-    i = 0
 
-    while i < len(datelist):
-        if datelist[i][0] == workingyear:
-            workinglist.append(datelist[i])
-            i += 1
-        else:
-            workinglist.sort(key=lambda x:x[1], reverse = True)
-            j = 0
-            workingmonthlist = []
-            workingmonth = workinglist[j][1]
 
-    for line in workinglist:
-        print(line)
+
+
+
+# errorList.sort()
+# relist = []
+# i = 0
+# while i < len(errorList):
+
+#     relist.append(errorList[i][1])
+#     i += 1
+
+# datelist = turnToDate(relist)
+
+
+# def turntofinal(datelist):
+#     datelist.sort(reverse = True)
+#     workingyear = datelist[0][0]
+#     workinglist = []
+#     i = 0
+
+#     while i < len(datelist):
+#         if datelist[i][0] == workingyear:
+#             workinglist.append(datelist[i])
+#             i += 1
+#         else:
+#             workinglist.sort(key=lambda x:x[1], reverse = True)
+#             j = 0
+#             workingmonthlist = []
+#             workingmonth = workinglist[j][1]
+
+#     for line in workinglist:
+#         print(line)
